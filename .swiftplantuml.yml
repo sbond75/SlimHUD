@@ -1,0 +1,50 @@
+files:
+  include:
+  - "SlimHUD/Services/*"
+  - "SlimHUD/Controllers/**"
+  - "SlimHUD/Views/Hud.swift"
+  - "SlimHUD/Views/BarView/BarView.swift"
+elements:
+  havingAccessLevel:
+  - internal
+  - public
+  - open
+  showMembersWithAccessLevel:
+  - internal
+  - public
+  - open
+  showNestedTypes: true
+  showExtensions: merged
+theme: plain # see https://plantuml.com/theme
+skinparamCommands: # see https://plantuml.com/skinparam
+- skinparam classBackgroundColor PaleGreen
+- skinparam classArrowColor SeaGreen
+- skinparam classBorderColor SpringGreen
+- skinparam stereotypeCBackgroundColor YellowGreen
+- skinparam stereotypeCBackgroundColor<< Foo >> DimGray
+relationships:
+  inheritance:
+    label: "inherits from"
+    style:
+      lineStyle: dotted
+      lineColor: DarkViolet
+      textColor: DarkViolet
+    exclude:
+    - "NSObject"
+    - "AnyObject"
+    - "NSViewController"
+    - "NSView"
+    - "NSWindowController"
+    - "NSWindowDelegate"
+  realize:
+    label: "conforms to"
+    style:
+      lineStyle: dashed
+      lineColor: Blue
+      textColor: Blue
+  dependency:
+    label: extends
+    style:
+      lineStyle: bold
+      lineColor: DarkGreen
+      textColor: DarkViolet
