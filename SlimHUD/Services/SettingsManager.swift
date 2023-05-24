@@ -35,6 +35,7 @@ class SettingsManager {
     private static let MarginKey = "marginValue"
     private static let FlatBarKey = "flatBar"
     private static let ShouldHideMenuBarIconKey = "shouldHideMenuBarIcon"
+    private static let FirstLaunch = "firstLaunch"
 
     // MARK: - Bars colors
     var volumeBackgroundColor: NSColor {
@@ -150,6 +151,12 @@ class SettingsManager {
     }
 
     // MARK: - General
+    var firstLaunch: Bool {
+        didSet {
+            UserDefaultsManager.setItem(false, for: SettingsManager.FirstLaunch)
+        }
+    }
+    
     var enabledBars: EnabledBars {
         didSet {
             let enabledBarsRaw = [enabledBars.volumeBar,
@@ -222,6 +229,7 @@ class SettingsManager {
         enabledBars = EnabledBars(volumeBar: volumeBarEnabled, brightnessBar: brightnessBarEnabled, keyboardBar: keyboardBarEnabled)
         marginValue = UserDefaultsManager.getInt(for: SettingsManager.MarginKey, defaultValue: 10)
         flatBar = UserDefaultsManager.getBool(for: SettingsManager.FlatBarKey, defaultValue: false)
+        firstLaunch = UserDefaultsManager.getBool(for: SettingsManager.FirstLaunch, defaultValue: true)
     }
 
     func resetDefaultBarsColors() {

@@ -35,7 +35,10 @@ class MainMenuController: NSWindowController {
     }
 
     override func awakeFromNib() {
-        if CommandLine.arguments.contains("showSettingsAtLaunch") {
+        if settingsManager.firstLaunch {
+            showSettingsWindow()
+            settingsManager.firstLaunch = false
+        } else if CommandLine.arguments.contains("showSettingsAtLaunch") {
             showSettingsWindow()
         }
     }
